@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Stripe prototype</title>
+</head>
+<body>
+
+Embedded form
+<form action="" method="POST">
+    <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_rYcqyBZR23rcUFn1nfpK8GDg"
+            data-amount="2000"
+            data-name="Demo Site"
+            data-description="2 widgets ($20.00)"
+            data-image="/128x128.png">
+    </script>
+</form>
+
+
+//form that will take care of form validation, error handling, and sending credit card numbers securely to Stripe
+<?php require_once('./config.php'); ?>
+
+<form action="charge.php" method="post">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<?php echo $stripe['publishable_key']; ?>"
+            data-amount="5000" data-description="One year's subscription"></script>
+</form>
+
+</body>
+</html>
